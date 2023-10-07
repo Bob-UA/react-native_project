@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Alert, Button, ImageBackground, Keyboard, KeyboardAvoidingView, Platform, Pressable, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View } from "react-native";
+import { Alert, Button, ImageBackground, Keyboard,  Pressable, Text, TextInput, TouchableWithoutFeedback, View } from "react-native";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons"; 
 import { styles } from "./styles";
 
@@ -10,23 +10,17 @@ import { styles } from "./styles";
   const [password, onChangeTextPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+    const onRegister = () => {
+      console.log("login: "+login);
+        console.log("email: " + email);
+        console.log("password: " + password);
+    }
+    
+    
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
-  // const handleChange = (e) => {
-  //   console.log(e);
-  //   // switch (name) {
-  //   //   case "login":
-  //   //     return setLogin(value);
-  //   //   case "email":
-  //   //     return setEmail(value);
-  //   //   case "password":
-  //   //     return setPassword(value);
-  //   //   default:
-  //   //     return;
-  //   // }
-  // };
 
   return (
     <View>
@@ -87,7 +81,7 @@ import { styles } from "./styles";
                 onPress={toggleShowPassword}
               />
             </View>
-            <Pressable onPress={"onPressFunction"} style={styles.button}>
+            <Pressable onPress={onRegister} style={styles.button}>
               <Text style={styles.buttonText}>Register</Text>
             </Pressable>
             <Pressable style={styles.signInButton}>

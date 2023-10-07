@@ -20,19 +20,10 @@ const LoginScreen = () => {
     setShowPassword(!showPassword);
   };
 
-  // const handleChange = (e) => {
-  //   console.log(e);
-  //   // switch (name) {
-  //   //   case "login":
-  //   //     return setLogin(value);
-  //   //   case "email":
-  //   //     return setEmail(value);
-  //   //   case "password":
-  //   //     return setPassword(value);
-  //   //   default:
-  //   //     return;
-  //   // }
-  // };
+      const onLogin = () => {
+        console.log("email: " + email);
+        console.log("password: "+ password);
+      };
 
   return (
     <View>
@@ -71,7 +62,7 @@ const LoginScreen = () => {
                 onPress={toggleShowPassword}
               />
             </View>
-            <Pressable onPress={"onPressFunction"} style={styles.button}>
+            <Pressable onPress={onLogin} style={styles.button}>
               <Text style={styles.buttonText}>Register</Text>
             </Pressable>
             <Pressable style={styles.signInButton}>
