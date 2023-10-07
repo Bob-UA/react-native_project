@@ -1,11 +1,18 @@
 import { useEffect, useState } from "react";
-import { Alert, Button, ImageBackground, StyleSheet, Text, TextInput, View } from "react-native"
+import { Alert, Button, ImageBackground, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons"; 
+import { styles } from "./styles";
 
 
-export const RegistrationScreen = () => {
+  const RegistrationScreen = () => {
   const [login, setLogin] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   // const handleChange = (e) => {
   //   console.log(e);
@@ -21,35 +28,46 @@ export const RegistrationScreen = () => {
   //   // }
   // };
 
-    return (
-      <View>
-        <ImageBackground
-          source={require("../src/img/photo_bg.jpg")}
-          style={styles.image}
-        >
-          <View style={styles.container}>
-            <View style={styles.photoContainer}></View>
-            <Text style={styles.titleText}>Registration</Text>
+  return (
+    <View>
+      <ImageBackground
+        source={require("../src/img/photo_bg.jpg")}
+        style={styles.image}
+      >
+        <View style={styles.registrationContainer}>
+          <View style={styles.photoContainer}>
+            <Ionicons
+              name="add-circle-outline"
+              size={25}
+              color="#FF6C00"
+              style={[styles.addIcon,{
+            transform: [{translateX: 12.5}],
+          },]}
+            />
+          </View>
+          <Text style={styles.titleText}>Registration</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Login"
+            type="login"
+            name="login"
+            value={login}
+            required
+            onChange={setLogin}
+          />
+          <TextInput
+            style={styles.emailInput}
+            placeholder="Email"
+            type="email"
+            name="email"
+            value={email}
+            required
+            onChange={setEmail}
+          />
+          <View style={styles.passwordContainer}>
             <TextInput
               style={styles.input}
-              placeholder="Login"
-              type="login"
-              name="login"
-              value={login}
-              required
-              onChange={setLogin}
-            />
-            <TextInput
-              style={styles.emailInput}
-              placeholder="Email"
-              type="email"
-              name="email"
-              value={email}
-              required
-              onChange={setEmail}
-            />
-            <TextInput
-              style={styles.input}
+              secureTextEntry={!showPassword}
               placeholder="Password"
               type="password"
               name="password"
@@ -57,70 +75,26 @@ export const RegistrationScreen = () => {
               required
               onChange={setPassword}
             />
-            <Button
-              style={styles.button}
-              title="Registration"
-              onPress={() => Alert.alert("Simple Button pressed")}
+            <MaterialCommunityIcons
+              name={showPassword ? "eye-off" : "eye"}
+              size={24}
+              color="#aaa"
+              style={styles.toggle}
+              onPress={toggleShowPassword}
             />
           </View>
-        </ImageBackground>
-      </View>
-    );
+          <Pressable onPress={"onPressFunction"} style={styles.button}>
+            <Text style={styles.buttonText}>Register</Text>
+          </Pressable>
+          <Pressable style={styles.signInButton}>
+            <Text style={styles.signInButtonText}>
+              Already have an account? Sign in
+            </Text>
+          </Pressable>
+        </View>
+      </ImageBackground>
+    </View>
+  );
 }
 
-const styles = StyleSheet.create({
-  image: {
-    resizeMode: "cover",
-    width: "100%",
-    height: "100%",
-    justifyContent: "flex-end",
-  },
-  container: {
-    position:"relative",
-    paddingLeft: 16,
-    paddingRight: 16,
-    paddingTop: 92,
-    paddingBottom: 45,
-    backgroundColor: "#ffffff",
-    alignItems: "center",
-    justifyContent: "center",
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
-  },
-  photoContainer: {
-    borderRadius:16,
-    top:-50,
-    width: 120,
-    height: 120,
-    backgroundColor: "#F6F6F6",
-    position:"absolute",
-  },
-  titleText: {
-    marginBottom: 32,
-    fontFamily: "Roboto-Medium",
-    fontSize: 30,
-  },
-  input: {
-    borderRadius: 8,
-    width: "100%",
-    backgroundColor: "#F6F6F6",
-    padding: 16,
-  },
-  emailInput: {
-    borderRadius: 8,
-    width: "100%",
-    backgroundColor: "#F6F6F6",
-    padding: 16,
-    marginBottom: 16,
-    marginTop: 16,
-  },
-  "input:not(:last-child)": {
-    marginBottom: 16,
-  },
-  button: {
-    marginTop: 43,
-    width: "100%",
-    fontFamily: "Roboto-Medium",
-    fontSize: 16,
-  },
-});
+export default RegistrationScreen;
