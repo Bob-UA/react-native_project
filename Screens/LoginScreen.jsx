@@ -26,12 +26,12 @@ const LoginScreen = () => {
       };
 
   return (
-    <View>
-      <ImageBackground
-        source={require("../src/img/photo_bg.jpg")}
-        style={styles.image}
-      >
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View>
+        <ImageBackground
+          source={require("../src/img/photo_bg.jpg")}
+          style={styles.image}
+        >
           <View style={styles.loginContainer}>
             <Text style={styles.titleText}>Login</Text>
             <TextInput
@@ -71,9 +71,9 @@ const LoginScreen = () => {
               </Text>
             </Pressable>
           </View>
-        </TouchableWithoutFeedback>
-      </ImageBackground>
-    </View>
+        </ImageBackground>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 

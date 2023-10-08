@@ -19,8 +19,8 @@ export default App = () => {
   
   return (
     <>
-      <RegistrationScreen />
-      {/* <LoginScreen/> */}
+      {/* <RegistrationScreen /> */}
+      <LoginScreen/>
     </>
   );
 };

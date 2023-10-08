@@ -22,78 +22,78 @@ import { styles } from "./styles";
   };
 
 
-  return (
-    <View>
-      <ImageBackground
-        source={require("../src/img/photo_bg.jpg")}
-        style={styles.image}
-      >
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View style={styles.registrationContainer}>
-            <View style={styles.photoContainer}>
-              <Ionicons
-                name="add-circle-outline"
-                size={25}
-                color="#FF6C00"
-                style={[
-                  styles.addIcon,
-                  {
-                    transform: [{ translateX: 12.5 }],
-                  },
-                ]}
-              />
-            </View>
-            <Text style={styles.titleText}>Registration</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="Login"
-              type="login"
-              name="login"
-              value={login}
-              required
-              onChangeText={onChangeTextLogin}
-            />
-            <TextInput
-              style={styles.emailInput}
-              placeholder="Email"
-              type="email"
-              name="email"
-              value={email}
-              required
-              onChangeText={onChangeTextEmail}
-            />
-            <View style={styles.passwordContainer}>
+    return (
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View>
+          <ImageBackground
+            source={require("../src/img/photo_bg.jpg")}
+            style={styles.image}
+          >
+            <View style={styles.registrationContainer}>
+              <View style={styles.photoContainer}>
+                <Ionicons
+                  name="add-circle-outline"
+                  size={25}
+                  color="#FF6C00"
+                  style={[
+                    styles.addIcon,
+                    {
+                      transform: [{ translateX: 12.5 }],
+                    },
+                  ]}
+                />
+              </View>
+              <Text style={styles.titleText}>Registration</Text>
               <TextInput
                 style={styles.input}
-                secureTextEntry={!showPassword}
-                placeholder="Password"
-                type="password"
-                name="password"
-                value={password}
+                placeholder="Login"
+                type="login"
+                name="login"
+                value={login}
                 required
-                onChangeText={onChangeTextPassword}
+                onChangeText={onChangeTextLogin}
               />
-              <MaterialCommunityIcons
-                name={showPassword ? "eye-off" : "eye"}
-                size={24}
-                color="#aaa"
-                style={styles.toggle}
-                onPress={toggleShowPassword}
+              <TextInput
+                style={styles.emailInput}
+                placeholder="Email"
+                type="email"
+                name="email"
+                value={email}
+                required
+                onChangeText={onChangeTextEmail}
               />
+              <View style={styles.passwordContainer}>
+                <TextInput
+                  style={styles.input}
+                  secureTextEntry={!showPassword}
+                  placeholder="Password"
+                  type="password"
+                  name="password"
+                  value={password}
+                  required
+                  onChangeText={onChangeTextPassword}
+                />
+                <MaterialCommunityIcons
+                  name={showPassword ? "eye-off" : "eye"}
+                  size={24}
+                  color="#aaa"
+                  style={styles.toggle}
+                  onPress={toggleShowPassword}
+                />
+              </View>
+              <Pressable onPress={onRegister} style={styles.button}>
+                <Text style={styles.buttonText}>Register</Text>
+              </Pressable>
+              <Pressable style={styles.signInButton}>
+                <Text style={styles.signInButtonText}>
+                  Already have an account? Sign in
+                </Text>
+              </Pressable>
             </View>
-            <Pressable onPress={onRegister} style={styles.button}>
-              <Text style={styles.buttonText}>Register</Text>
-            </Pressable>
-            <Pressable style={styles.signInButton}>
-              <Text style={styles.signInButtonText}>
-                Already have an account? Sign in
-              </Text>
-            </Pressable>
-          </View>
-        </TouchableWithoutFeedback>
-      </ImageBackground>
-    </View>
-  );
+          </ImageBackground>
+        </View>
+      </TouchableWithoutFeedback>
+    );
 }
 
 export default RegistrationScreen;
