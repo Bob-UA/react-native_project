@@ -1,4 +1,7 @@
 import { StyleSheet } from "react-native";
+import { Dimensions } from "react-native";
+
+const ScreenWidth = Dimensions.get("window").width;
 
 export const styles = StyleSheet.create({
   addIcon: {
@@ -21,7 +24,7 @@ export const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     justifyContent: "flex-end",
-    },
+  },
   loginContainer: {
     position: "relative",
     paddingLeft: 16,
@@ -45,7 +48,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
-    },
+  },
   photoContainer: {
     borderRadius: 16,
     top: -50,
@@ -97,5 +100,44 @@ export const styles = StyleSheet.create({
     fontFamily: "Roboto-Regular",
     fontSize: 16,
   },
+  // ==========Home Screen Styles==================
+  plusButton: {
+    alignItems: "center",
+    justifyContent: "center",
+    width: 70,
+    height: 40,
+    backgroundColor: "#FF6C00",
+    borderRadius: 20,
+  },
+  // ==========Posts Screen Styles==================
+
+  postsContainer: {
+    flex: 1,
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingBottom: "auto",
+    backgroundColor: "#ffffff",
+  },
+  headerContainer: {
+    width: ScreenWidth,
+    height: "100%",
+    // flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    marginLeft: -16,
+     paddingBottom:11,
+  },
+  logoutButton: {
+    position: "absolute",
+    right: 16,
+    bottom:11,
+  },
+  textHeader: {
+    fontSize: 17,
+    fontFamily: "Roboto-Medium",
+  },
+  postsFooter: {
+    paddingTop:9,
+  }
 });
 

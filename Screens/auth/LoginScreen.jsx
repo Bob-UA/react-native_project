@@ -2,34 +2,47 @@ import { useEffect, useState } from "react";
 import {
   ImageBackground,
   Keyboard,
-  Pressable,
   Text,
   TextInput,
+  TouchableOpacity,
   TouchableWithoutFeedback,
   View,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { styles } from "./styles";
+import { styles } from "../styles";
 
 const LoginScreen = () => {
   const [email, onChangeTextEmail] = useState("");
   const [password, onChangeTextPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  const navigation = useNavigation();
+
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
-      const onLogin = () => {
-        console.log("email: " + email);
-        console.log("password: "+ password);
-      };
+  const reset = () => {
+    onChangeTextEmail("");
+    onChangeTextPassword("");
+  };
+
+  const onLogin = () => {
+    console.log("email: " + email);
+    console.log("password: " + password);
+    if (!email || !password) {
+      return;
+    }
+    navigation.navigate("Home");
+    reset();
+  };
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View>
         <ImageBackground
-          source={require("../src/img/photo_bg.jpg")}
+          source={require("../../src/img/photo_bg.jpg")}
           style={styles.image}
         >
           <View style={styles.loginContainer}>
@@ -62,14 +75,17 @@ const LoginScreen = () => {
                 onPress={toggleShowPassword}
               />
             </View>
-            <Pressable onPress={onLogin} style={styles.button}>
-              <Text style={styles.buttonText}>Register</Text>
-            </Pressable>
-            <Pressable style={styles.signInButton}>
+            <TouchableOpacity onPress={onLogin} style={styles.button}>
+              <Text style={styles.buttonText}>Login</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.signInButton}
+              onPress={() => navigation.navigate("Registration")}
+            >
               <Text style={styles.signInButtonText}>
                 Don't have an account? Sign up
               </Text>
-            </Pressable>
+            </TouchableOpacity>
           </View>
         </ImageBackground>
       </View>

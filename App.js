@@ -1,10 +1,16 @@
 import React from "react";
+import "react-native-gesture-handler";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import { useFonts } from "expo-font";
 
 
-import { StyleSheet, Text, View } from "react-native";
-import RegistrationScreen from "./Screens/RegistrationScreen";
-import LoginScreen from "./Screens/LoginScreen";
+const AuthStack = createStackNavigator();
+
+import RegistrationScreen from "./Screens/auth/RegistrationScreen";
+import LoginScreen from "./Screens/auth/LoginScreen";
+import Home from "./Screens/homeScreen/Home";
+import setRoute from "./router";
 
 export default App = () => {
   const [fontsLoaded] = useFonts({
@@ -13,21 +19,17 @@ export default App = () => {
     "Roboto-Medium": require("./assets/fonts/Roboto-Medium.ttf"),
   });
 
-   if (!fontsLoaded) {
-     return null;
-   }
-  
+  const routing = setRoute(true);
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
     <>
-      {/* <RegistrationScreen /> */}
-      <LoginScreen/>
+      <NavigationContainer>
+        {routing}
+      </NavigationContainer>
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#eaeaea",
-  },
-});
