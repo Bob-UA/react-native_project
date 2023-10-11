@@ -15,10 +15,11 @@ const Home = () => {
     <>
       <MainTab.Navigator
         initialRouteName="Posts"
-        options={{
-          tabBarShowLabel: false,
-          tabBarStyle: {
-            height:100,
+        screenOptions={{
+          "tabBarShowLabel": false,
+          "tabBarStyle": {
+            // height: 83,
+            // paddingBottom: 34,
           }
         }}
       >
