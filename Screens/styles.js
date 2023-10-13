@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 import { Dimensions } from "react-native";
 
 const ScreenWidth = Dimensions.get("window").width;
+const ScreenHeight = Dimensions.get("window").height;
 
 export const styles = StyleSheet.create({
   addIcon: {
@@ -125,19 +126,60 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-end",
     marginLeft: -16,
-     paddingBottom:11,
+    paddingBottom: 11,
   },
   logoutButton: {
     position: "absolute",
     right: 16,
-    bottom:11,
+    bottom: 11,
   },
   textHeader: {
     fontSize: 17,
     fontFamily: "Roboto-Medium",
   },
   postsFooter: {
-    paddingTop:9,
+    paddingTop: 9,
+  },
+  //==========================Create post screen======================
+  createPostsMainContainer: {
+    flex: 1,
+    paddingTop: 32,
+    paddingLeft: 16,
+    paddingRight: 16,
+    backgroundColor: "#ffffff",
+  },
+  photoPreviewContainer: {
+    height: 240,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F6F6F6",
+    borderRadius: 8,
+  },
+  snap: {},
+  snapContainer: {
+    padding: 18,
+    backgroundColor: "#ffffff",
+    borderRadius: 50,
+  },
+  cameraContainer: {
+    zIndex:100,
+    flex: 1,
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+  },
+  camera: {
+    width: ScreenWidth,
+    height: ScreenHeight,
+  },
+  cameraCloseButton: {
+    zIndex:200,
+    position: "absolute",
+    top: 20,
+    left: 20,
+    padding: 10,
   }
 });
+
+
 
